@@ -74,6 +74,10 @@ void ordenador(nomes nameStr[], int nameCont, int numbersInt[], int intCont, flo
     }
 }
 
+float distancia_euclidiana(int x, int y) {
+    return sqrt(x * x + y * y);
+}
+
 int main()
 {
     FILE *fp_in = fopen("L0Q2.in", "r");
@@ -125,7 +129,7 @@ int main()
                     numbersPoints[pointCont].x = x;
                     numbersPoints[pointCont].y = y;
                     numbersPoints[pointCont].ordem_entrada = pointCont;
-                    numbersPoints[pointCont++].distancia_origem = sqrt(x * x + y * y);
+                    numbersPoints[pointCont++].distancia_origem = distancia_euclidiana(x, y);
                 }
             }
             else
