@@ -28,21 +28,19 @@ int main()
         printf("Os arquivos nao puderam ser abertos!");
         return EXIT_FAILURE;
     }
-
-    fgets(str, sizeof(str), fp_in);
-
-    char space = " ";
     int lineCount = 0;
 
-    char *token = strtok(str, " ");
-
-    while (str != NULL)
+    while (fgets(str, sizeof(str), fp_in) != NULL)
     {
         float numbersFloat[100];
         int isFloat = false;
         int numbersInt[100];
+        nomes nameStr[100];
 
-        int floatCont = 0, intCont = 0;
+        int floatCont = 0, intCont = 0, nameCont = 0;
+
+        char *token = strtok(str, " ");
+
         while (token != NULL)
         {
             if (isdigit(token[0]) || token[0] == '-')
@@ -55,20 +53,20 @@ int main()
                 else
                     numbersInt[intCont++] = atoi(token);
             }
-
-            else if (strchr(token, '(') != NULL)
-            { // 2D point
+            else if (token[0] == "(")
+            {
                 float x, y;
                 sscanf(token, "(%f,%f)", &x, &y);
-                printf("2D Point: (%.1f,%.1f)\n", x, y);
             }
-
             else
-            { // string
-                printf("String: %s\n", token);
+            {
+                strcpy(nameStr[nameCont++].nome, token);
             }
             token = strtok(NULL, " ");
         }
         return 0;
     }
+
+    // Ordenação
+    ordenarString(nameStr, nameCont);
 }
