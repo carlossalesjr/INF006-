@@ -91,7 +91,7 @@ int main()
 
         fprintf(fp_out, " distance %.2f", distanciaTotal);
         fprintf(fp_out, " shortcut %.2f\n", shortcut);
-        line++;
+        line++; 
     }
     fclose(fp_in);
     fclose(fp_out);
