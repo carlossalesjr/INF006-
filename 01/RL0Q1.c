@@ -68,7 +68,6 @@ int main()
             count++;
             token = strtok(NULL, " ");
         }
-        char text[1000];
 
         if (line != 0)
             fprintf(fp_out, "\n");
